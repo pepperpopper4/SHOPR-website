@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Robotic fleets that automate grocery stores using your existing infrastructure — no rebuild required." />
+  <title>SHOPR — Grocery Automation Robotics</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <a href="/" class="header-banner" aria-label="SHOPR home">
+      <img
+        src="assets/logo-header.png"
+        alt="SHOPR — grocery automation robotics"
+        class="header-logo"
+        width="2172"
+        height="724"
+      />
+    </a>
+    <div class="header-nav">
+      <div class="header-inner">
+        <nav class="main-nav" aria-label="Main navigation">
+          <a href="#platform">Platform</a>
+          <a href="#how-it-works">How it works</a>
+          <a href="#fleet">Fleet</a>
+          <a
+            href="assets/shopr-whitepaper.pdf"
+            class="nav-whitepaper"
+            target="_blank"
+            rel="noopener noreferrer"
+          >White paper</a>
+          <a href="#contact" class="nav-cta">Contact</a>
+        </nav>
+        <button type="button" class="menu-toggle" aria-label="Open menu" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-grid">
+        <div class="hero-content">
+          <p class="eyebrow">Robotic fleet automation</p>
+          <h1>Automate your grocery store <span class="highlight">without rebuilding it</span></h1>
+          <p class="hero-lead">
+            We deploy coordinated robotic fleets that work with your aisles, shelving, and back-of-house layout — so you gain efficiency on the floor you already have.
+          </p>
+          <div class="hero-actions">
+            <a href="#contact" class="btn btn-primary">Request a demo</a>
+            <a
+              href="assets/shopr-whitepaper.pdf"
+              class="btn btn-whitepaper"
+              target="_blank"
+              rel="noopener noreferrer"
+            >White paper</a>
+            <a href="#how-it-works" class="btn btn-ghost">See how it works</a>
+          </div>
+          <ul class="hero-stats" aria-label="Key metrics">
+            <li>
+              <strong>24/7</strong>
+              <span>Floor coverage</span>
+            </li>
+            <li>
+              <strong>Zero</strong>
+              <span>Store redesign</span>
+            </li>
+            <li>
+              <strong>Fleet</strong>
+              <span>Coordinated robots</span>
+            </li>
+          </ul>
+        </div>
+        <div class="hero-visual" aria-hidden="true">
+          <div class="hero-orbit">
+            <div class="orbit-ring orbit-ring--outer"></div>
+            <div class="orbit-ring orbit-ring--inner"></div>
+            <div class="robot-node robot-node--1"></div>
+            <div class="robot-node robot-node--2"></div>
+            <div class="robot-node robot-node--3"></div>
+            <div class="store-grid"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="platform" class="section platform">
+      <div class="container">
+        <header class="section-header">
+          <p class="eyebrow">Built for retail reality</p>
+          <h2>Automation that respects your infrastructure</h2>
+          <p class="section-lead">
+            Most robotics vendors ask you to change your store. We map your existing layout and deploy fleets that navigate real aisles, real stock rooms, and real peak-hour traffic.
+          </p>
+        </header>
+        <div class="card-grid">
+          <article class="feature-card">
+            <div class="card-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            </div>
+            <h3>Works in your store</h3>
+            <p>Robots use your current floor plan, shelf heights, and traffic patterns — no greenfield build required.</p>
+          </article>
+          <article class="feature-card">
+            <div class="card-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
+            </div>
+            <h3>Coordinated fleets</h3>
+            <p>Multiple robots share tasks, avoid collisions, and hand off work across zones for continuous operation.</p>
+          </article>
+          <article class="feature-card">
+            <div class="card-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+            </div>
+            <h3>Operations dashboard</h3>
+            <p>Monitor fleet health, task completion, and store coverage from a single control center.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="how-it-works" class="section how-it-works">
+      <div class="container">
+        <header class="section-header section-header--center">
+          <p class="eyebrow">How it works</p>
+          <h2>From survey to running fleet</h2>
+        </header>
+        <ol class="steps">
+          <li class="step">
+            <span class="step-num">01</span>
+            <div>
+              <h3>Map your infrastructure</h3>
+              <p>We digitize aisles, back-of-house routes, and constraints using your existing store data and a short on-site survey.</p>
+            </div>
+          </li>
+          <li class="step">
+            <span class="step-num">02</span>
+            <div>
+              <h3>Deploy the fleet</h3>
+              <p>Robots are configured for your layout, then rolled out in phases so operations never stop.</p>
+            </div>
+          </li>
+          <li class="step">
+            <span class="step-num">03</span>
+            <div>
+              <h3>Scale across locations</h3>
+              <p>Playbooks from your first store accelerate rollout to additional sites in your chain.</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section id="fleet" class="section fleet">
+      <div class="container fleet-layout">
+        <div class="fleet-copy">
+          <p class="eyebrow">The fleet</p>
+          <h2>Robots built for grocery, not the lab</h2>
+          <p>
+            Our units handle restocking support, inventory checks, and floor monitoring — tasks that matter every hour in a busy store. They communicate as a fleet so coverage stays even when one unit is charging or servicing.
+          </p>
+          <ul class="fleet-list">
+            <li>Inventory sensing &amp; shelf gap detection</li>
+            <li>Safe navigation in customer aisles</li>
+            <li>Back-of-house and receiving coordination</li>
+            <li>Over-the-air updates and remote diagnostics</li>
+          </ul>
+        </div>
+        <div class="fleet-diagram" aria-hidden="true">
+          <div class="diagram-aisle"></div>
+          <div class="diagram-aisle"></div>
+          <div class="diagram-aisle"></div>
+          <div class="diagram-robot diagram-robot--a"></div>
+          <div class="diagram-robot diagram-robot--b"></div>
+          <div class="diagram-robot diagram-robot--c"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section cta">
+      <div class="container cta-inner">
+        <h2>Ready to automate on the floor you already have?</h2>
+        <p>Tell us about your stores and we'll show you what a fleet looks like in your layout.</p>
+        <a href="mailto:hello@shopr.example" class="btn btn-primary btn-lg">Get in touch</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p class="footer-brand">SHOPR</p>
+      <p class="footer-tagline">Robotic fleets for grocery automation.</p>
+      <p class="footer-copy">&copy; <span id="year"></span> SHOPR. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
