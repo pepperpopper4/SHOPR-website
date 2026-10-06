@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="SHOPR store portal — watch shelf stock, fleet location, and send a robot to fill a cart." />
+  <title>Store portal — SHOPR</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="portal.css" />
+</head>
+<body class="portal-body">
+  <div id="login-view" class="login-view">
+    <div class="login-card">
+      <a href="index.html" class="portal-brand" aria-label="SHOPR home">SHOPR</a>
+      <p class="eyebrow">Store portal</p>
+      <h1>Sign in to your floor</h1>
+      <p class="login-lead">Shop owners use this view to watch stock, follow the fleet, and take over a robot’s camera or drive.</p>
+      <form id="login-form" class="login-form">
+        <label>
+          Email
+          <input id="login-email" name="email" type="email" autocomplete="username" required placeholder="you@store.com" />
+        </label>
+        <label>
+          Password
+          <input id="login-password" name="password" type="password" autocomplete="current-password" required minlength="4" placeholder="••••••••" />
+        </label>
+        <p id="login-error" class="form-error" hidden></p>
+        <button type="submit" class="btn btn-primary btn-lg">Sign in</button>
+      </form>
+      <div class="demo-box">
+        <p class="demo-label">Preview account</p>
+        <p><span>owner@northside.shop</span><span>fleet</span></p>
+        <button type="button" class="btn btn-ghost" id="fill-demo">Use preview account</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="app-view" class="portal-app" hidden>
+    <header class="portal-header">
+      <a href="index.html" class="portal-brand" aria-label="SHOPR home">SHOPR</a>
+      <div class="portal-header-store">
+        <strong id="store-name">Northside Convenience</strong>
+        <span id="signed-in-as"></span>
+      </div>
+      <button type="button" class="btn btn-ghost btn-sm" id="sign-out">Sign out</button>
+    </header>
+
+    <div class="portal-shell">
+      <section class="floor-panel" aria-label="Store floor">
+        <div class="floor-toolbar">
+          <div>
+            <p class="eyebrow">Bird’s-eye floor</p>
+            <h2 id="floor-title">Northside Convenience</h2>
+          </div>
+          <p class="live-pill"><span class="live-dot" aria-hidden="true"></span> Live</p>
+          <ul class="legend" aria-label="Stock colors">
+            <li><i class="swatch swatch--ok"></i> In stock</li>
+            <li><i class="swatch swatch--low"></i> Low</li>
+            <li><i class="swatch swatch--critical"></i> Critical</li>
+          </ul>
+          <p id="slot-readout" class="slot-readout">Click a shelf for stock detail. Levels are random for this preview.</p>
+        </div>
+        <div class="floor-stage">
+          <svg id="floor" viewBox="0 0 1060 740" role="application" aria-label="Bird’s-eye view of the convenience store"></svg>
+          <div id="map-tip" class="map-tip" hidden></div>
+        </div>
+        <form id="cart-form" class="cart-bar">
+          <div class="cart-bar-top">
+            <label for="cart-input">Test cart</label>
+            <p>Type items and a robot will go get them. Separate several with commas.</p>
+          </div>
+          <div class="cart-row">
+            <input id="cart-input" type="text" autocomplete="off" placeholder="Try milk, bread, bananas" />
+            <button type="submit" class="btn btn-primary">Send robot</button>
+          </div>
+          <ul id="suggestions" class="suggestions" hidden></ul>
+          <p id="cart-message" class="cart-message" aria-live="polite"></p>
+          <ul id="cart-list" class="cart-list"></ul>
+        </form>
+      </section>
+
+      <aside class="fleet-panel" aria-label="Robot status">
+        <header class="fleet-head">
+          <p class="eyebrow">Fleet</p>
+          <h2>Robot status</h2>
+          <p class="fleet-note">Open a camera or take teleop control of any unit.</p>
+        </header>
+        <div id="robot-list" class="robot-list"></div>
+      </aside>
+    </div>
+  </div>
+
+  <dialog id="camera-dialog" class="portal-dialog" aria-labelledby="camera-title">
+    <div class="dialog-card">
+      <header class="dialog-head">
+        <div>
+          <p class="eyebrow">Forward camera</p>
+          <h3 id="camera-title">SHOPR-01</h3>
+        </div>
+        <button type="button" class="icon-btn" id="close-camera" aria-label="Close camera">×</button>
+      </header>
+      <div class="cam-stage" aria-hidden="true">
+        <div class="cam-aisle"></div>
+        <div class="cam-shelf cam-shelf--l"></div>
+        <div class="cam-shelf cam-shelf--r"></div>
+        <div class="cam-scan"></div>
+        <div class="cam-hud">
+          <span class="rec"><i></i> REC</span>
+          <span id="cam-clock"></span>
+        </div>
+      </div>
+      <p id="cam-caption" class="cam-caption"></p>
+      <p class="dialog-note">Preview feed tied to this robot’s live task. No store camera is connected yet.</p>
+    </div>
+  </dialog>
+
+  <dialog id="teleop-dialog" class="portal-dialog" aria-labelledby="teleop-title">
+    <div class="dialog-card">
+      <header class="dialog-head">
+        <div>
+          <p class="eyebrow">Teleop</p>
+          <h3 id="teleop-title">SHOPR-01</h3>
+        </div>
+        <button type="button" class="icon-btn" id="close-teleop" aria-label="Close teleop">×</button>
+      </header>
+      <p id="teleop-task" class="cam-caption"></p>
+      <div class="dpad" id="dpad">
+        <button type="button" data-dir="up" aria-label="Drive forward">↑</button>
+        <button type="button" data-dir="left" aria-label="Drive left">←</button>
+        <button type="button" data-dir="down" aria-label="Drive back">↓</button>
+        <button type="button" data-dir="right" aria-label="Drive right">→</button>
+      </div>
+      <p class="dialog-note">Arrow keys or WASD while this panel is open. Driving pauses the robot’s current job until you release it. Pull onto the charge pad to start charging.</p>
+      <button type="button" class="btn btn-primary" id="release-teleop">Release control</button>
+    </div>
+  </dialog>
+
+  <script src="portal.js"></script>
+</body>
+</html>

@@ -490,6 +490,13 @@ h2 {
   color: var(--text-muted);
 }
 
+.feature-card .text-link {
+  display: inline-block;
+  margin-top: 1rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
+}
+
 /* Steps */
 .how-it-works {
   background: var(--black);
